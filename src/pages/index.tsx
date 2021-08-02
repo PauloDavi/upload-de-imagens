@@ -23,7 +23,7 @@ interface ApiResponse {
 
 export default function Home(): JSX.Element {
   async function getImages({ pageParam = null }) {
-    const { data } = await api.get<ApiResponse>('/images', {
+    const { data } = await api.get<ApiResponse>('api/images', {
       params: {
         after: pageParam,
       },
