@@ -1,9 +1,20 @@
-import { Box, Flex, Button, useDisclosure, Image } from '@chakra-ui/react';
+import {
+  Box,
+  Flex,
+  Button,
+  useDisclosure,
+  Image,
+  useBreakpointValue,
+  Icon,
+} from '@chakra-ui/react';
+import { RiAddLine } from 'react-icons/ri';
 
 import { ModalAddImage } from './Modal/AddImage';
 
 export function Header(): JSX.Element {
   const { onOpen, isOpen, onClose } = useDisclosure();
+
+  const isSmallWindow = useBreakpointValue({ base: true, sm: false });
 
   return (
     <>
@@ -13,11 +24,17 @@ export function Header(): JSX.Element {
           alignItems="center"
           maxW={1120}
           mx="auto"
-          px={20}
+          px="10"
           py={6}
         >
           <Image src="logo.svg" h={10} />
-          <Button onClick={() => onOpen()}>Adicionar imagem</Button>
+          <Button onClick={() => onOpen()}>
+            {isSmallWindow ? (
+              <Icon as={RiAddLine} fontSize="24" />
+            ) : (
+              'Adicionar imagem'
+            )}
+          </Button>
         </Flex>
       </Box>
 
